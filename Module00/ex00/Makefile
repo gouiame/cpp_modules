@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: cgouiame <cgouiame@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/11/23 17:10:02 by cgouiame          #+#    #+#              #
+#    Updated: 2023/11/23 17:10:03 by cgouiame         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = megaphone
 
 SRC		=	megaphone.cpp
@@ -6,19 +18,21 @@ CC 		= c++
 
 FLAGS	= -std=c++98 -Wall -Wextra -Werror 
 
-OBJS 	= $(SRC:.c=.o)
+OBJS 	= $(SRC:.cpp=.o)
+
+all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(FLAGS) $(SRC) -o $(NAME)
+	$(CC) $(FLAGS) $(OBJS) -o $(NAME)
 
-all: $(NAME) $(OBJS)
 
-%.o: %.c
-		$(CC) $(FLAGS) -c $<
+%.o: %.cpp
+		$(CC) $(FLAGS) -o $@ -c $<
 
 clean:
-	rm -rf $(NAME)
+	rm -rf $(OBJS)
 
 fclean: clean
+	rm -rf $(NAME)
 
 re: fclean all

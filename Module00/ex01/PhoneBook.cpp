@@ -6,7 +6,7 @@
 /*   By: cgouiame <cgouiame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 17:36:09 by cgouiame          #+#    #+#             */
-/*   Updated: 2023/11/22 21:15:28 by cgouiame         ###   ########.fr       */
+/*   Updated: 2023/11/27 01:21:10 by cgouiame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,26 @@ void    PhoneBook::add()
 	std::string darkestsecret;
 	
 	std::cout<<"Insert the first name: ";
-	// std::cin >> firstname;
-	std::getline(std::cin, firstname);
+	if (!std::getline(std::cin, firstname))
+		exit(0);
 	std::cout<<"Insert the last name: ";
-	std::getline(std::cin, lastname);
+	if (!std::getline(std::cin, lastname))
+		exit(0);
 	std::cout<<"Insert the nickname: ";
-	std::getline(std::cin, nickname);
+	if (!std::getline(std::cin, nickname))
+		exit(0);
 	std::cout<<"Insert the phone number: ";
-	std::getline(std::cin, phonenumber);
+	if (!std::getline(std::cin, phonenumber))
+		exit(0);
 	std::cout<<"Insert the darkest secret: ";
-	std::getline(std::cin, darkestsecret);
+	if (!std::getline(std::cin, darkestsecret))
+		exit(0);
 	
 	if (firstname == "" || lastname == "" || nickname == "" || phonenumber == "" || darkestsecret == "")
-		return ;
+		{
+			std::cout<<"\033[31m"<<"Please complete all required fields."<<"\033[0m"<<std::endl;
+			return ;
+		}
 	this->contacts[idx].setIndex(idx);
 	this->contacts[idx].setFirstName(firstname);
 	this->contacts[idx].setLastName(lastname);
@@ -70,7 +77,7 @@ void	PhoneBook::display()
 		nb = this->idx;
 	while(i < nb)
 	{
-		std::cout << "         " << this->contacts[i].getIndex();
+		std::cout <<std::setw(10)<< this->contacts[i].getIndex();
 		printline(this->contacts[i].getFirstName());
 		printline(this->contacts[i].getLastName());
 		printline(this->contacts[i].getNickName());
@@ -96,21 +103,22 @@ void    PhoneBook::search()
 	int	idx;
 	if (this->count == 0)
 	{
-		std::cout << "Add some contacts to bring your phonebook to life!"<<std::endl;
+		std::cout<<"\033[31m" << "Add some contacts to bring your phonebook to life!"<<"\033[0m"<<std::endl;
 		return ;
 	}
 	display();
 	std::cout << "Please enter the contact index : ";
-	std::cin >> index_c;
+	if(!std::getline(std::cin, index_c))
+		exit(0);
 	if (index_c.length() != 1 || index_c[0] < 48 || index_c[0]> 55)
 	{
-		std::cout << "Index not found. Please try again.";
+		std::cout<<"\033[31m" << "Index not found. Please try again."<<"\033[0m"<<std::endl;
 		return ;
 	}
 	idx = index_c[0] - '0';
 	if (idx >= this->count)
     {
-        std::cout << "Index not found. Please try again." << std::endl;
+        std::cout<<"\033[31m" << "Index not found. Please try again."<<"\033[0m" << std::endl;
         return;
     }
 	infoscontact(index_c);
@@ -121,33 +129,4 @@ PhoneBook::PhoneBook(int idx, int count)
 	this->idx = idx;
 	this->count = count;
 }
-
-void	welcome()
-{
-	std::cout << std::endl;
-	std::cout<<"          ************************************************************"<<std::endl;
-	std::cout<<"          *             Welcome to your Awesome PhoneBook            *"<<std::endl;
-	std::cout<<"          ************************************************************"<<std::endl;
-	std::cout<<"          * Explore your contacts seamlessly:                        *"<<std::endl;
-	std::cout<<"          *  - To add a new contact, type 'ADD'.                     *"<<std::endl;
-	std::cout<<"          *  - To find a contact, type 'SEARCH'.                     *"<<std::endl;
-	std::cout<<"          *  - To exit, simply type 'EXIT'.                          *"<<std::endl;
-	std::cout<<"          ************************************************************"<<std::endl;
-}
-
-int main ()
-{
-	PhoneBook Pb(0, 0);
-	std::string cmd; 
-
-	welcome();
-	while (std::getline(std::cin, cmd))
-	{
-		if(cmd == "ADD")
-			Pb.add();
-		if(cmd == "SEARCH")
-		    Pb.search();
-		if(cmd == "EXIT")
-			return 0;
-	}
-}
+PhoneBook::~PhoneBook(){}
