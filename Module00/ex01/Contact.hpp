@@ -6,9 +6,12 @@
 /*   By: cgouiame <cgouiame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 17:10:36 by cgouiame          #+#    #+#             */
-/*   Updated: 2023/11/27 00:18:33 by cgouiame         ###   ########.fr       */
+/*   Updated: 2023/11/28 21:30:46 by cgouiame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef CONTACT_HPP
+# define CONTACT_HPP
 
 #include <iostream>
 
@@ -36,3 +39,5 @@ class Contact {
 		std::string	getPhoneNumber();
 		std::string	getDarkestSecret();
 };
+
+#endif
