@@ -5,14 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: cgouiame <cgouiame@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/11/30 16:30:20 by cgouiame          #+#    #+#              #
-#    Updated: 2023/12/01 16:11:20 by cgouiame         ###   ########.fr        #
+#    Created: 2023/12/04 21:30:06 by cgouiame          #+#    #+#              #
+#    Updated: 2023/12/07 12:49:33 by cgouiame         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = weapon
+NAME = fixed
 
-SRC		=	main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
+SRC		=	main.cpp Fixed.cpp
 
 CC 		= c++
 

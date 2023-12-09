@@ -5,14 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: cgouiame <cgouiame@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/11/30 19:00:33 by cgouiame          #+#    #+#              #
-#    Updated: 2023/12/01 16:12:16 by cgouiame         ###   ########.fr        #
+#    Created: 2023/12/03 17:11:56 by cgouiame          #+#    #+#              #
+#    Updated: 2023/12/07 12:49:20 by cgouiame         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = replace
+NAME = fixed
 
-SRC		=	main.cpp replace.cpp
+SRC		=	main.cpp Fixed.cpp
 
 CC 		= c++
 

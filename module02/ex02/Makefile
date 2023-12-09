@@ -5,14 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: cgouiame <cgouiame@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/12/01 16:05:08 by cgouiame          #+#    #+#              #
-#    Updated: 2023/12/01 20:26:09 by cgouiame         ###   ########.fr        #
+#    Created: 2023/12/07 12:50:49 by cgouiame          #+#    #+#              #
+#    Updated: 2023/12/07 12:51:05 by cgouiame         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = harl
+NAME = fixed
 
-SRC		=	main.cpp Harl.cpp
+SRC		=	main.cpp Fixed.cpp
 
 CC 		= c++
 
@@ -25,7 +25,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(CC) $(FLAGS) $(OBJS) -o $(NAME)
 
-%.o: %.cpp Harl.hpp
+%.o: %.cpp
 		$(CC) $(FLAGS) -o $@ -c $<
 
 clean:
