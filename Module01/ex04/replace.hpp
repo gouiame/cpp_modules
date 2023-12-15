@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   replace.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cgouiame <cgouiame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/28 13:21:34 by cgouiame          #+#    #+#             */
-/*   Updated: 2023/12/02 16:10:05 by cgouiame         ###   ########.fr       */
+/*   Created: 2023/11/30 19:00:28 by cgouiame          #+#    #+#             */
+/*   Updated: 2023/12/01 21:03:24 by cgouiame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-#define ZOMBIE_HPP
+#ifndef REPLACE_HPP
+# define REPLACE_HPP
 
 #include <iostream>
+#include <fstream>
 
-class Zombie
+class Replace
 {
-	private :
-		std::string name;
-	public:
-		Zombie(std::string name);
-		~Zombie();
-		void announce(void);
+    public :
+    Replace();
+    ~Replace();
+    void ft_replace(std::string filename, std::string s1, std::string s2);
 };
-
-Zombie* newZombie( std::string name );
-void randomChump( std::string name );
 
 
 #endif

@@ -5,28 +5,30 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cgouiame <cgouiame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/28 13:21:23 by cgouiame          #+#    #+#             */
-/*   Updated: 2023/12/01 21:29:47 by cgouiame         ###   ########.fr       */
+/*   Created: 2023/11/30 19:00:35 by cgouiame          #+#    #+#             */
+/*   Updated: 2023/12/01 22:18:58 by cgouiame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "replace.hpp"
 
-int main()
+int main(int argc, char **argv)
 {
-    std::string name;
-    std::cout<<"\033[32m" << "           Creating a Zombie on the stack"<<"\033[0m"<<std::endl;
-    std::cout << "Enter the name of Zombie : ";
-    if (!std::getline(std::cin, name))
-        exit(0);
-    randomChump(name);
+    Replace Rep;
+    if (argc != 4)
+    {
+        std::cerr <<"Error : check args"<<std::endl;
+        return 1;
+    }
+    std::string filename = argv[1];
+    std::string s1 = argv[2];
+    std::string s2 = argv[3];
+    if (filename.empty() || s1.empty() || s2.empty())
+    {
+        std::cerr << "Error : arguments cannot be empty"<<std::endl;
+        return 1;
+    }
+    Rep.ft_replace(filename, s1, s2);
 
-    std::cout <<"\033[32m"<< "           Creating a Zombie on the heap"<<"\033[0m"<<std::endl;
-    std::cout <<"Enter the name of Zombie : ";
-    if (!std::getline(std::cin, name))
-        exit(0);
-    Zombie *zombiee = newZombie(name);
-    zombiee->announce();
-    delete zombiee;
     return 0;
 }

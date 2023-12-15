@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cgouiame <cgouiame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/28 13:21:34 by cgouiame          #+#    #+#             */
-/*   Updated: 2023/12/02 16:10:05 by cgouiame         ###   ########.fr       */
+/*   Created: 2023/12/01 16:05:11 by cgouiame          #+#    #+#             */
+/*   Updated: 2023/12/02 16:06:53 by cgouiame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-#define ZOMBIE_HPP
+#include "Harl.hpp"
 
-#include <iostream>
-
-class Zombie
+int main()
 {
-	private :
-		std::string name;
-	public:
-		Zombie(std::string name);
-		~Zombie();
-		void announce(void);
-};
+    Harl harl;
+    std::string input;
 
-Zombie* newZombie( std::string name );
-void randomChump( std::string name );
-
-
-#endif
+    while(1)
+    {
+        std::cout <<"Enter a level : ";
+        if (!std::getline(std::cin, input))
+            return 0;
+        if (input.empty())
+            continue ;
+        harl.complain(input); 
+    }
+}

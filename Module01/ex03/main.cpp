@@ -5,28 +5,31 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cgouiame <cgouiame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/28 13:21:23 by cgouiame          #+#    #+#             */
-/*   Updated: 2023/12/01 21:29:47 by cgouiame         ###   ########.fr       */
+/*   Created: 2023/11/30 14:51:24 by cgouiame          #+#    #+#             */
+/*   Updated: 2023/12/01 22:10:54 by cgouiame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Weapon.hpp"
+#include "HumanA.hpp"
+#include "HumanB.hpp"
 
 int main()
 {
-    std::string name;
-    std::cout<<"\033[32m" << "           Creating a Zombie on the stack"<<"\033[0m"<<std::endl;
-    std::cout << "Enter the name of Zombie : ";
-    if (!std::getline(std::cin, name))
-        exit(0);
-    randomChump(name);
-
-    std::cout <<"\033[32m"<< "           Creating a Zombie on the heap"<<"\033[0m"<<std::endl;
-    std::cout <<"Enter the name of Zombie : ";
-    if (!std::getline(std::cin, name))
-        exit(0);
-    Zombie *zombiee = newZombie(name);
-    zombiee->announce();
-    delete zombiee;
+    {
+        Weapon club = Weapon("crude spiked club");
+        HumanA bob("Bob", club);
+        bob.attack();
+        club.setType("some other type of club");
+        bob.attack();
+    }
+    {
+        Weapon club = Weapon("crude spiked club");
+        HumanB jim("Jim");
+        jim.setWeapon(club);
+        jim.attack();
+        club.setType("some other type of club");
+        jim.attack();
+    }
     return 0;
 }
